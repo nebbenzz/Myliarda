@@ -44,6 +44,9 @@ public class Main {
         } else if (heros instanceof Mage) {
             ((Mage) heros).setRune(heros.getRune() + recupRunes);
             System.out.println(heros.getNom() + " a récupéré " + recupRunes + " runes !");
+        } else if (heros instanceof Sorcier) {
+            ((Sorcier) heros).setRune(heros.getRune() + recupRunes);
+            System.out.println(heros.getNom() + " a récupéré " + recupRunes + " runes !");
         }
     }
 
@@ -60,7 +63,9 @@ public class Main {
                 case "fantassin":
                     return new Fantassin("Ilgrad");
                     case "mage":
-                        return new Mage("Mage");
+                        return new Mage("Dolpher");
+                        case "sorcier":
+                            return new Sorcier("Daskin");
                         default:
                             System.out.print("Classe inconnue, combat annulé");
                             break;
@@ -79,6 +84,9 @@ public class Main {
                 combatMonstre(heros, monstre);
             }
 
+            if(monstre.isEmpoisonne()){
+                Sorcier.appliquerPoison(monstre);
+            }
             afficherPv(heros, monstre);
 
             if (heros.getPv() <= 0) {
@@ -102,10 +110,17 @@ public class Main {
         switch (dec) {
             case "a":
                 int proba = probAtkSpe();
-                if(proba < 7) {
-                    int degats = heros.attaqueSpe();
-                    monstre.subirDegats(degats);
-                    waitseconde();
+                if(proba < 25) {
+                    if (heros instanceof Sorcier sorcier) {
+                        sorcier.definirCible(monstre); // Définir la cible
+                        int degats = sorcier.attaqueSpe();
+                        monstre.subirDegats(degats);
+                        waitseconde();
+                    } else {
+                        int degats = heros.attaqueSpe();
+                        monstre.subirDegats(degats);
+                        waitseconde();
+                    }
                 }else {
                     int degats = heros.attaquer();
                     monstre.subirDegats(degats);

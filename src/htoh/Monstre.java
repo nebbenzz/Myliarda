@@ -7,6 +7,8 @@ public class Monstre extends abstract_htoh{
     private static final String[] TYPES_MONSTRES = {"Orc", "Démon", "Golem"};
     private static int coutRune = 0;
     private static final Random rand = new Random();
+    private boolean empoisonne = false;
+    private int toursEmpoisonne = 0;
 
     public Monstre() {
         super(NOM_MONSTRES[rand.nextInt(NOM_MONSTRES.length)],
@@ -15,6 +17,22 @@ public class Monstre extends abstract_htoh{
                 rand.nextInt(6) + 10,
                     rand.nextInt(8) + 12,
                     rand.nextInt(1));
+    }
+
+    public boolean isEmpoisonne(){
+        return empoisonne;
+    }
+
+    public void setEmpoisonne(boolean empoisonne){
+        this.empoisonne = empoisonne;
+    }
+
+    public int getToursEmpoisonne(){
+        return toursEmpoisonne;
+    }
+
+    public void setToursEmpoisonne(int toursEmpoisonne){
+        this.toursEmpoisonne = toursEmpoisonne;
     }
 
     public int attaquer(){
