@@ -11,7 +11,7 @@ public class Main {
         Random rand = new Random();
         boolean valStart = rand.nextBoolean();
 
-        System.out.println("----- COMBAT EN COURS -----\n");
+        System.out.println("------- COMBAT EN COURS -------\n");
 
         //génération du monstre
         Monstre monstre = new Monstre();
@@ -67,7 +67,7 @@ public class Main {
                         case "sorcier":
                             return new Sorcier("Daskin");
                         default:
-                            System.out.print("Classe inconnue, combat annulé");
+                            System.out.print("Classe inconnue, veuillez réessayer ");
                             break;
             }
         }
@@ -104,8 +104,8 @@ public class Main {
 
     //méthode de combat du héros
     private static void combatJoueur(Scanner scanner, abstract_htoh heros, Monstre monstre) {
-        System.out.println("\n> C'est à vous de jouer !" +
-                "Que souhaitez-vous faire ? (attaquer (a) ou ne rien faire(o) )");
+        System.out.println("\n> C'est à vous de jouer ! " +
+                "Que souhaitez-vous faire ? (attaquer (a) / ne rien faire(o))");
         String dec = scanner.nextLine().toLowerCase();
         switch (dec) {
             case "a":
@@ -150,6 +150,7 @@ public class Main {
         }
     }
 
+    //méthode générant une probabilité pour attaqueSpe (%)
     private static int probAtkSpe(){
         Random rand = new Random();
         int proba = rand.nextInt(100);
@@ -158,11 +159,11 @@ public class Main {
 
     //méthode affichage pv héros/monstre
     private static void afficherPv(abstract_htoh heros, Monstre monstre) {
-        System.out.println("\n---------------");
+        System.out.println("\n-------------------");
         System.out.println("Vos PV : " + heros.getPv());
         waitseconde();
         System.out.println("PV du monstre: " + monstre.getPv());
-        System.out.println("---------------");
+        System.out.println("-------------------");
     }
 
     //méthode de regain de runes si o pressé

@@ -3,9 +3,8 @@ package htoh;
 import java.util.Random;
 
 public class Monstre extends abstract_htoh{
-    private static final String[] NOM_MONSTRES = {"Gorgoth", "Zarkus", "Mormag"};
-    private static final String[] TYPES_MONSTRES = {"Orc", "Démon", "Golem"};
-    private static int coutRune = 0;
+    private static final String[] NOM_MONSTRES = {"Gorgoth", "Zarkus", "Mormag", "Lupia"};
+    private static final String[] TYPES_MONSTRES = {"Orc", "Démon", "Golem", "Damné"};
     private static final Random rand = new Random();
     private boolean empoisonne = false;
     private int toursEmpoisonne = 0;
@@ -46,6 +45,9 @@ public class Monstre extends abstract_htoh{
             case "Golem":
                 System.out.println("\uD83D\uDCA5" + nom + " lance un rocher et inflige " + force + " de dégâts. \uD83D\uDCA5");
                 return getForce();
+            case "Damné":
+                System.out.println("\uD83D\uDCA5" + nom + " inflige une morsure de" + force + " de dégâts. \uD83D\uDCA5");
+                return getForce();
             default:
                 System.out.println("\uD83D\uDCA5" + nom + " attaque et inflige " + force + " de dégâts. \uD83D\uDCA5");
                 return getForce();
@@ -62,6 +64,9 @@ public class Monstre extends abstract_htoh{
                 return getAtkSpe();
             case "Golem":
                 System.out.println("\uD83D\uDCA5" + nom + " provoque un tremblement de terre qui fait subir  " + atkspe + " de dégâts !!\uD83D\uDCA5");
+                return getAtkSpe();
+            case "Damné":
+                System.out.println("\uD83D\uDCA5" + nom + " réussi à s'aggriper et déchire un membre infligeant  " + atkspe + " de dégâts !!\uD83D\uDCA5");
                 return getAtkSpe();
             default:
                 System.out.println("\uD83D\uDCA5" + nom + "déclenche son attaque spéciale et inflige " + atkspe + "de dégâts !!\uD83D\uDCA5");
